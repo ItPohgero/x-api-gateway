@@ -1,0 +1,40 @@
+{
+  "name": "simple-gateway",
+  "version": "1.0.0",
+  "description": "A lightweight API Gateway built with Hono.js and Bun for managing and proxying requests to various microservices.",
+  "main": "src/index.ts",
+  "author": "Wahyu Agus Arifin (ItPohgero) <wahyu@example.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ItPohgero/simple-gateway.git"
+  },
+  "keywords": [
+    "itpohgero",
+    "wahyu agus arifin",
+    "api-gateway",
+    "microservices",
+    "proxy",
+    "hono",
+    "bun",
+    "typescript"
+  ],
+  "scripts": {
+    "dev": "bun run --hot src/index.ts",
+    "start": "bun src/index.ts",
+    "build": "bun build src/index.ts --outdir dist",
+    "type-check": "tsc --noEmit",
+    "lint": "echo 'Add linting command here'",
+    "test": "echo 'Add test command here'"
+  },
+  "dependencies": {
+    "hono": "^4.9.9"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "engines": {
+    "bun": ">=1.0.0",
+    "node": ">=18.0.0"
+  }
+}
