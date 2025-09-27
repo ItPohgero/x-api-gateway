@@ -35,7 +35,20 @@ export const config: GatewayConfig = {
 	},
 	cors: {
 		origin: process.env.CORS_ORIGIN?.split(",") || ["*"],
-		methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-		headers: ["Content-Type", "Authorization", "X-Requested-With"],
+		methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS", "HEAD"],
+		headers: [
+			"Content-Type", 
+			"Authorization", 
+			"X-Requested-With",
+			"Accept",
+			"Origin",
+			"Access-Control-Request-Method",
+			"Access-Control-Request-Headers",
+			"sec-ch-ua",
+			"sec-ch-ua-mobile",
+			"sec-ch-ua-platform",
+			"User-Agent",
+			"Referer"
+		],
 	},
 };
