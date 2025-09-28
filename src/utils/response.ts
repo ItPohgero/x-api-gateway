@@ -47,6 +47,28 @@ export const createSuccessResponse = <T>(
 };
 
 /**
+ * General response helper to handle various content types
+ */
+export const createResponse = (
+	body: unknown,
+	statusCode: number = 200,
+	contentType: string = "application/json",
+): Response => {
+	let responseBody: string | Blob;
+
+	if (contentType === "application/json") {
+		responseBody = JSON.stringify(body);
+	} else {
+		responseBody = body as Blob; // Assume body is already in the correct format for other content types
+	}
+
+	return new Response(responseBody, {
+		status: statusCode,
+		headers: { "Content-Type": contentType },
+	});
+};
+
+/**
  * Validate required route parameters
  */
 export const validateRouteParams = (
