@@ -59,8 +59,6 @@ async function makeRequest(options: ProxyOptions): Promise<Response> {
 		filteredHeaders["x-request-id"] = requestId;
 	}
 
-	console.log(`[PROXY:${requestId}] ${method} ${targetUrl}`);
-
 	try {
 		const response = await fetch(targetUrl, {
 			method,
@@ -166,7 +164,13 @@ export async function proxyRequest(
 		});
 
 		// Get response content
-		const responseBody = await response.text();
+		let responseBody: BodyInit;
+		if (response.headers.get("content-type")?.includes("application/json")) {
+			responseBody = await response.text();
+		} else {
+			responseBody = await response.arrayBuffer();
+		}
+
 		const responseHeaders = filterResponseHeaders(response.headers);
 
 		// Add tracing headers

@@ -59,7 +59,6 @@ async function makeRequest(options: ProxyOptions): Promise<Response> {
 		filteredHeaders["x-request-id"] = requestId;
 	}
 
-	console.log(`[PROXY:${requestId}] ${method} ${targetUrl}`);
 
 	try {
 		const response = await fetch(targetUrl, {
