@@ -59,11 +59,16 @@ async function makeRequest(options: ProxyOptions): Promise<Response> {
 		filteredHeaders["x-request-id"] = requestId;
 	}
 
+	// Remove Content-Type header if body is FormData (fetch will set it automatically)
+	if (body instanceof FormData) {
+		delete filteredHeaders["content-type"];
+	}
+
 	try {
 		const response = await fetch(targetUrl, {
 			method,
 			headers: filteredHeaders,
-			body: body ? JSON.stringify(body) : undefined,
+			body: body instanceof FormData ? body : body ? JSON.stringify(body) : undefined,
 			signal: AbortSignal.timeout(serviceConfig.timeout || 30000),
 		});
 
