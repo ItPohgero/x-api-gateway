@@ -1,4 +1,4 @@
-export type ServiceName = "sso" | "core" | "chat" | "islamic";
+export type ServiceName = "sso" | "core" | "chat" | "islamic" | "article" | "payment";
 
 export interface ServiceRoute {
 	prefix: string;

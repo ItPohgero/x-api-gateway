@@ -32,6 +32,14 @@ export const config: GatewayConfig = {
 			baseUrl: process.env.ISLAMIC_SERVICE_URL || "https://islamic.com",
 			timeout: 30000,
 		},
+		article: {
+			baseUrl: process.env.ARTICLE_SERVICE_URL || "https://article.com",
+			timeout: 30000,
+		},
+		payment: {
+			baseUrl: process.env.PAYMENT_SERVICE_URL || "https://payment.com",
+			timeout: 30000,
+		},
 	},
 	cors: {
 		origin: process.env.CORS_ORIGIN?.split(",") || ["*"],

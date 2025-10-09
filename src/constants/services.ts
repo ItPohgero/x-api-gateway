@@ -25,6 +25,16 @@ export const SERVICE_ROUTES: readonly ServiceRoute[] = [
 		service: "islamic",
 		description: "Islamic content and services",
 	},
+	{
+		prefix: "/api/article",
+		service: "article",
+		description: "Article content and services",
+	},
+	{
+		prefix: "/api/payment",
+		service: "payment",
+		description: "Payment content and services",
+	},
 ] as const;
 
 /**
