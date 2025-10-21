@@ -68,7 +68,12 @@ async function makeRequest(options: ProxyOptions): Promise<Response> {
 		const response = await fetch(targetUrl, {
 			method,
 			headers: filteredHeaders,
-			body: body instanceof FormData ? body : body ? JSON.stringify(body) : undefined,
+			body:
+				typeof body === "string" || body instanceof FormData || body instanceof URLSearchParams || body instanceof Blob
+					? body
+					: body !== undefined
+						? JSON.stringify(body)
+						: undefined,
 			signal: AbortSignal.timeout(serviceConfig.timeout || 30000),
 		});
 
@@ -126,7 +131,7 @@ async function extractRequestBody(c: Context): Promise<RequestBody> {
 
 	try {
 		if (contentType.includes("application/json")) {
-			return await c.req.json();
+			return await c.req.text();
 		} else if (contentType.includes("application/x-www-form-urlencoded")) {
 			return await c.req.text();
 		} else if (contentType.includes("multipart/form-data")) {
