@@ -56,7 +56,10 @@ export const config: GatewayConfig = {
 			"sec-ch-ua-mobile",
 			"sec-ch-ua-platform",
 			"User-Agent",
-			"Referer"
+			"Referer",
+			"X-SIGNATURE",
+			"X-TIMESTAMP",
+			"X-NONCE"
 		],
 	},
 };
